@@ -15,6 +15,18 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('songs.index')" :active="request()->routeIs('songs.index')">
+                        {{ __('Songs') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('genres.index')" :active="request()->routeIs('genres.index')">
+                        {{ __('Genres') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('saved-lists.index')" :active="request()->routeIs('saved-lists.index')">
+                        {{ __('Saved Lists') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('saved-songs.index')" :active="request()->routeIs('saved-songs.index')">
+                        {{ __('Saved Songs') }}
+                    </x-nav-link>
                 </div>
             </div>
 

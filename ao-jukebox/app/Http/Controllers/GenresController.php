@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Songs;
+use App\Models\Genres;
 use Illuminate\Http\Request;
 use App\Models\User;
 
-class SongsController extends Controller
+class GenresController extends Controller
 {
 
     /**
@@ -27,8 +27,8 @@ class SongsController extends Controller
     public function index()
     {
         $you = auth()->user();
-        $songs = Songs::all();
-        return view('songs.index', compact('songs', 'you'));
+        $genres = Genres::all();
+        return view('genres.index', compact('genres', 'you'));
     }
 
     /**
