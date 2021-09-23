@@ -15,17 +15,11 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('songs.index')" :active="request()->routeIs('songs.index')">
-                        {{ __('Songs') }}
-                    </x-nav-link>
                     <x-nav-link :href="route('genres.index')" :active="request()->routeIs('genres.index')">
                         {{ __('Genres') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('saved-lists.index')" :active="request()->routeIs('saved-lists.index')">
-                        {{ __('Saved Lists') }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('saved-songs.index')" :active="request()->routeIs('saved-songs.index')">
-                        {{ __('Saved Songs') }}
+                    <x-nav-link :href="route('songs.index')" :active="request()->routeIs('songs.index')">
+                        {{ __('Songs') }}
                     </x-nav-link>
                 </div>
             </div>
@@ -50,11 +44,18 @@
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
 
+                            <x-dropdown-link :href="route('saved-songs.index')">
+                                {{ __('Saved Songs') }}
+                            </x-dropdown-link>
+                            <x-dropdown-link :href="route('saved-lists.index')">
+                                {{ __('Saved Lists') }}
+                            </x-dropdown-link>
                             <x-dropdown-link :href="route('logout')"
                                     onclick="event.preventDefault();
                                                 this.closest('form').submit();">
                                 {{ __('Log Out') }}
                             </x-dropdown-link>
+
                         </form>
                     </x-slot>
                 </x-dropdown>

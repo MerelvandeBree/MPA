@@ -6,7 +6,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
-class SongSeeder extends Seeder
+class GenreSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,8 +15,8 @@ class SongSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('songs')->insert([
-            'song' => Str::random(10)
+        DB::table('genres')->insert([
+            'genre' => Str::random(10)
         ]);
     }
 }
