@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Saved_lists;
+use App\Models\SessionList;
 use Illuminate\Http\Request;
 use App\Models\User;
 
@@ -19,28 +20,25 @@ class Saved_listController extends Controller
         $this->middleware('auth');
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        $you = auth()->user();
-        $savedLists = Saved_lists::all();
-        return view('savedLists.index', compact('savedLists', 'you'));
+
+        $sp = new SessionList();
+        echo '<pre>';
+        var_dump($sp);
+        echo '</pre>';
+
+//        $you = auth()->user();
+//        $savedLists = Saved_lists::all();
+//        return view('savedLists.index', compact('savedLists', 'you'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-//    public function show($id)
-//    {
-//        $user = User::find($id);
-//        return view('dashboard.admin.userShow', compact( 'user' ));
-//    }
+    public function add($song_id) {
+        $sp = new SessionList();
+        $sp->AddSong($song_id);
+        echo '<pre>';
+        var_dump($sp);
+        echo '</pre>';
+    }
 
 }

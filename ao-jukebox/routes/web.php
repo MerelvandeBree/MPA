@@ -32,4 +32,7 @@ Route::resource('genres', \App\Http\Controllers\GenresController::class);
 Route::resource('saved-lists', \App\Http\Controllers\Saved_listController::class);
 Route::resource('saved-songs', \App\Http\Controllers\Saved_songsController::class);
 
+//Route::get('/saved-lists', [\App\Http\Controllers\Saved_listController::class, 'index']);
+Route::get('/saved-list/add/{song_id}', [\App\Http\Controllers\Saved_listController::class, 'add'])->name('savedLists.add');
+
 require __DIR__.'/auth.php';
