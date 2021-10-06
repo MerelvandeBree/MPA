@@ -34,6 +34,7 @@ Route::resource('saved-songs', \App\Http\Controllers\Saved_songsController::clas
 
 //Route::get('/saved-lists', [\App\Http\Controllers\Saved_listController::class, 'index']);
 Route::get('/saved-list/add/{song_id}', [\App\Http\Controllers\Saved_listController::class, 'add'])->name('savedLists.add');
+Route::get('/saved-song/add/{song_id}', [\App\Http\Controllers\Saved_songsController::class, 'add'])->name('savedSong.add');
 Route::get('/song/{song_id}', [\App\Http\Controllers\SongsController::class, 'detail'])->name('songs.detail');
 
 require __DIR__.'/auth.php';

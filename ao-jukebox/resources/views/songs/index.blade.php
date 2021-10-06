@@ -12,7 +12,7 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     <ul>
                         @foreach($songs as $song)
-                            <li>{{ $song->id }}) {{ $song->song }} <a href="/saved-list/add/{{ $song->id }}">Toevoegen</a><a href="/song/{{$song->id}}">Detail</a> </li>
+                            <li>{{ $song->id }}) {{ $song->song }} <a href="/saved-song/add/{{ $song->id }}">Add to playlist | </a><a href="/song/{{$song->id}}">Detail</a> </li>
                         @endforeach
                     </ul>
                 </div>

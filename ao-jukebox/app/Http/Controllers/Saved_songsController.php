@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Saved_songs;
+use App\Models\Saved_lists;
+use App\Models\SessionList;
+use App\Models\SessionSongs;
 use Illuminate\Http\Request;
 use App\Models\User;
 
@@ -19,28 +21,25 @@ class Saved_songsController extends Controller
         $this->middleware('auth');
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        $you = auth()->user();
-        $savedSongs = Saved_songs::all();
-        return view('savedSongs.index', compact('savedSongs', 'you'));
+
+        $sp = new SessionSongs();
+        echo '<pre>';
+        var_dump($sp);
+        echo '</pre>';
+
+//        $you = auth()->user();
+//        $savedLists = Saved_lists::all();
+//        return view('savedLists.index', compact('savedLists', 'you'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-//    public function show($id)
-//    {
-//        $user = User::find($id);
-//        return view('dashboard.admin.userShow', compact( 'user' ));
-//    }
+    public function add($song_id) {
+        $sp = new SessionSongs();
+        $sp->AddSong($song_id);
+        echo '<pre>';
+        var_dump($sp);
+        echo '</pre>';
+    }
 
 }

@@ -18,6 +18,7 @@ class Songs extends Migration
             $table->string('song');
             $table->string('artist');
             $table->string('length');
+            $table->string('genre_id');
             $table->timestamps();
         });
     }

@@ -34,21 +34,8 @@ class SongsController extends Controller
     public function detail($id)
     {
         $you = auth()->user();
-//        $songs = Songs::all();
         $song = Songs::find($id);
         return view('songs.detail', compact('song', 'you'));
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-//    public function show($id)
-//    {
-//        $user = User::find($id);
-//        return view('dashboard.admin.userShow', compact( 'user' ));
-//    }
 
 }

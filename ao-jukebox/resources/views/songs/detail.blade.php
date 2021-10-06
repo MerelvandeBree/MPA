@@ -13,7 +13,7 @@
                     <ul>
                         <li>Name song: {{ $song->song }}</li>
                         <li>Artist/ band: {{ $song->artist }}</li>
-                        <li>Duration: {{ $song->length }}</li>
+                        <li>Duration: {{ $song->length }} minutes</li>
                     </ul>
                 </div>
             </div>
