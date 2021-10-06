@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+use phpDocumentor\Reflection\Types\Integer;
 
 class SongSeeder extends Seeder
 {
@@ -16,7 +17,9 @@ class SongSeeder extends Seeder
     public function run()
     {
         DB::table('songs')->insert([
-            'song' => Str::random(10)
+            'song' => Str::random(10),
+            'artist' => Str::random(10),
+            'length' => Str::random(4)
         ]);
     }
 }

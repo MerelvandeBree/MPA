@@ -16,6 +16,8 @@ class Songs extends Migration
         Schema::create('songs', function (Blueprint $table) {
             $table->id();
             $table->string('song');
+            $table->string('artist');
+            $table->string('length');
             $table->timestamps();
         });
     }

@@ -31,6 +31,14 @@ class SongsController extends Controller
         return view('songs.index', compact('songs', 'you'));
     }
 
+    public function detail($id)
+    {
+        $you = auth()->user();
+//        $songs = Songs::all();
+        $song = Songs::find($id);
+        return view('songs.detail', compact('song', 'you'));
+    }
+
     /**
      * Display the specified resource.
      *

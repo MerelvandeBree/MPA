@@ -11,4 +11,5 @@ class Songs extends Model
     use HasFactory;
     use Timestamp;
     protected $table = 'songs';
+
 }
