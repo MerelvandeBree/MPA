@@ -22,19 +22,23 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-//Route::get('/songs', [\App\Http\Controllers\SongsController::class, 'index']);
-//Route::get('/genres', [\App\Http\Controllers\GenresController::class, 'index']);
-//Route::get('/saved-lists', [\App\Http\Controllers\Saved_listController::class, 'index']);
-//Route::get('/saved-list-songs', [\App\Http\Controllers\Saved_songsController::class, 'index']);
-
+// Menu items
 Route::resource('songs', \App\Http\Controllers\SongsController::class);
 Route::resource('genres', \App\Http\Controllers\GenresController::class);
 Route::resource('saved-lists', \App\Http\Controllers\Saved_listController::class);
-Route::resource('saved-songs', \App\Http\Controllers\Saved_songsController::class);
+Route::get('/saved-songs', [\App\Http\Controllers\Saved_songsController::class, 'index'])->name('savedSongs.index');
 
-//Route::get('/saved-lists', [\App\Http\Controllers\Saved_listController::class, 'index']);
+
+// Add pages
 Route::get('/saved-list/add/{song_id}', [\App\Http\Controllers\Saved_listController::class, 'add'])->name('savedLists.add');
-Route::get('/saved-song/add/{song_id}', [\App\Http\Controllers\Saved_songsController::class, 'add'])->name('savedSong.add');
+Route::get('/saved-song/add/{song_id}', [\App\Http\Controllers\Saved_songsController::class, 'add'])->name('savedSongs.add');
+
+// Detail pages
 Route::get('/song/{song_id}', [\App\Http\Controllers\SongsController::class, 'detail'])->name('songs.detail');
+Route::get('/genre/{genre_id}', [\App\Http\Controllers\GenresController::class, 'songList'])->name('genres.songList');
+
+// Delete pages
+Route::get('/saved-song/delete/{song_id}', [\App\Http\Controllers\Saved_songsController::class, 'delete'])->name('savedSongs.delete');
+
 
 require __DIR__.'/auth.php';

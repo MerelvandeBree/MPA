@@ -12,7 +12,7 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     <ul>
                         @foreach($genres as $genre)
-                            <li>{{ $genre->genre }}</li>
+                            <li>  <a href="/genre/{{$genre->id}}">{{ $genre->id }}) {{ $genre->genre }} </a></li>
                         @endforeach
                     </ul>
                 </div>

@@ -44,7 +44,7 @@
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
 
-                            <x-dropdown-link :href="route('saved-songs.index')">
+                            <x-dropdown-link :href="route('savedSongs.index')">
                                 {{ __('Saved Songs') }}
                             </x-dropdown-link>
                             <x-dropdown-link :href="route('saved-lists.index')">

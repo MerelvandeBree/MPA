@@ -29,6 +29,8 @@ class SongsController extends Controller
         $you = auth()->user();
         $songs = Songs::all();
         return view('songs.index', compact('songs', 'you'));
+
+
     }
 
     public function detail($id)

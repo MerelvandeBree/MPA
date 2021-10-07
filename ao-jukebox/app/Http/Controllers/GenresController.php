@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Genres;
+use App\Models\Songs;
 use Illuminate\Http\Request;
 use App\Models\User;
 
@@ -31,16 +32,11 @@ class GenresController extends Controller
         return view('genres.index', compact('genres', 'you'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-//    public function show($id)
-//    {
-//        $user = User::find($id);
-//        return view('dashboard.admin.userShow', compact( 'user' ));
-//    }
+    public function songList($genre_id)
+    {
+        $you = auth()->user();
+        $songs = Songs::where('genre_id', '=', $genre_id)->get();
+        return view('songs.index', compact('songs'));
+    }
 
 }

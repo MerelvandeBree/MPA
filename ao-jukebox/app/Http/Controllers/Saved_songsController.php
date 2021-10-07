@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Saved_lists;
-use App\Models\SessionList;
 use App\Models\SessionSongs;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Session;
 
 class Saved_songsController extends Controller
 {
@@ -25,21 +25,28 @@ class Saved_songsController extends Controller
     {
 
         $sp = new SessionSongs();
-        echo '<pre>';
-        var_dump($sp);
-        echo '</pre>';
 
-//        $you = auth()->user();
-//        $savedLists = Saved_lists::all();
-//        return view('savedLists.index', compact('savedLists', 'you'));
+        $you = auth()->user();
+        $savedSongs = $sp->getSongs();
+
+        return view('savedSongs.index', compact('savedSongs', 'you'));
     }
 
     public function add($song_id) {
         $sp = new SessionSongs();
         $sp->AddSong($song_id);
-        echo '<pre>';
-        var_dump($sp);
-        echo '</pre>';
+
+        $you = auth()->user();
+        $savedSongs = $sp->getSongs($song_id);
+
+        return view('savedSongs.add', compact('savedSongs', 'you'));
+    }
+
+    public function delete($song_id){
+        $sp = new SessionSongs();
+        $sp->DeleteSong($song_id);
+
+        return redirect()->route('savedSongs.index');
     }
 
 }

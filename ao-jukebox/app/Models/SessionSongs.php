@@ -6,10 +6,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Session;
 
-class SessionSongs extends Model
+class SessionSongs
 {
     use HasFactory;
-    protected $table = 'saved_songs';
     private $items = Array();
 
     function __construct()
@@ -20,7 +19,7 @@ class SessionSongs extends Model
             $this->items = Session::get('savedSongs');
         }
         $current_playlist = Session::get('savedSongs');
-        parent::__construct();
+//        parent::__construct();
     }
 
     function AddSong($song_id) {
@@ -28,8 +27,28 @@ class SessionSongs extends Model
         $this->SaveSession();
     }
 
+    function DeleteSong($song_id) {
+        foreach ($this->items as $key => $value){
+            if ($value == $song_id){
+                unset($this->items[$key]);
+            }
+        }
+        $this->SaveSession();
+    }
+
     function SaveSession() {
         Session::put('savedSongs', $this->items);
+    }
+
+    function getSongs() {
+        $songs = array();
+
+        foreach ($this->items as $song) {
+            array_push($songs, Songs::find($song));
+        }
+
+        return $songs;
+//        return Session::get('savedSongs');
     }
 
 }
