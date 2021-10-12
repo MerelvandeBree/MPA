@@ -22,16 +22,16 @@ class Saved_listController extends Controller
 
     public function index()
     {
-
+        // get playlists
         $sp = new SessionList();
         echo '<pre>';
         var_dump($sp);
         echo '</pre>';
-
-//        $you = auth()->user();
-//        $savedLists = Saved_lists::all();
-//        return view('savedLists.index', compact('savedLists', 'you'));
     }
+
+    // public function createplaylist()
+    // public function showplaylist()
+    // public function storeplaylist()
 
     public function add($song_id) {
         $sp = new SessionList();
