@@ -21,6 +21,9 @@
                     <x-nav-link :href="route('songs.index')" :active="request()->routeIs('songs.index')">
                         {{ __('Songs') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('savedLists.index')" :active="request()->routeIs('savedLists.index')">
+                        {{ __('Saved lists') }}
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -46,9 +49,6 @@
 
                             <x-dropdown-link :href="route('savedSongs.index')">
                                 {{ __('Saved Songs') }}
-                            </x-dropdown-link>
-                            <x-dropdown-link :href="route('saved-lists.index')">
-                                {{ __('Saved Lists') }}
                             </x-dropdown-link>
                             <x-dropdown-link :href="route('logout')"
                                     onclick="event.preventDefault();

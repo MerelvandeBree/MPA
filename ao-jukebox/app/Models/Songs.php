@@ -12,4 +12,8 @@ class Songs extends Model
     use Timestamp;
     protected $table = 'songs';
 
+    public function Playlist() {
+        return $this->belongsToMany(Saved_lists::class);
+    }
+
 }

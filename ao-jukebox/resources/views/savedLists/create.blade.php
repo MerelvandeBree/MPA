@@ -16,14 +16,14 @@
                     <!-- Validation Errors -->
                     <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-                    <form method="POST" action="/Savedlists/store">
+                    <form method="POST" action="{{ route('savedLists.add') }}">
                     @csrf
 
                     <!-- Email Address -->
                         <div>
-                            <x-label for="playlist_name" :value="__('Playlist-name')" />
+                            <x-label for="playlist-name" :value="__('Playlist-name')" />
 
-                            <x-input id="playlist_name" class="block mt-1 w-full" type="text" name="playlist_name" required autofocus />
+                            <x-input id="playlist-name" class="block mt-1 w-full" type="text" name="playlist-name" required autofocus />
                         </div>
 
                         <div class="flex items-center justify-end mt-4">

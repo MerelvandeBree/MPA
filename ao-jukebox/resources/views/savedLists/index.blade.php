@@ -11,8 +11,12 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <ul>
-                        @foreach($savedLists as $savedList)
-                            <li>{{ $savedList->saved_list }}</li>
+                        @foreach($playlists as $playlist)
+                            <li>{{ $playlist->id }}) {{ $playlist->saved_list }}</li>
+                            @foreach($playlist->songs() as $song)
+                                <li>{{$song->song}}</li>
+                            @endforeach
+                            <br>
                         @endforeach
                     </ul>
                 </div>

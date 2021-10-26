@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class SavedListSongs extends Migration
+class CreatePlaylistsongTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class SavedListSongs extends Migration
      */
     public function up()
     {
-        Schema::create('saved_list_songs', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('saved_list_songs');
+        Schema::create('playlistsong', function (Blueprint $table) {
+            $table->id();
+            $table->integer('playlist_id');
+            $table->integer('song_id');
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ class SavedListSongs extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('saved_list_songs');
+        Schema::dropIfExists('playlistsong');
     }
 }

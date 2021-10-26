@@ -5,8 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Saved_songs extends Model
+class PlaylistSong extends Model
 {
+    protected $table = 'playlistsong';
     use HasFactory;
-    protected $table = 'saved_list_Songs';
+
 }

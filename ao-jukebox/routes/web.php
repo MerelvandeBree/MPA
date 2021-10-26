@@ -25,12 +25,12 @@ Route::get('/dashboard', function () {
 // Menu items
 Route::resource('songs', \App\Http\Controllers\SongsController::class);
 Route::resource('genres', \App\Http\Controllers\GenresController::class);
-Route::resource('saved-lists', \App\Http\Controllers\Saved_listController::class);
+//Route::resource('saved-lists', \App\Http\Controllers\Saved_listController::class);
+Route::get('/saved-lists', [\App\Http\Controllers\Saved_listController::class, 'index'])->name('savedLists.index');
 Route::get('/saved-songs', [\App\Http\Controllers\Saved_songsController::class, 'index'])->name('savedSongs.index');
 
-
 // Add pages
-Route::get('/saved-list/add/{song_id}', [\App\Http\Controllers\Saved_listController::class, 'add'])->name('savedLists.add');
+//Route::get('/saved-list/add/{song_id}', [\App\Http\Controllers\Saved_listController::class, 'add'])->name('savedLists.add');
 Route::get('/saved-song/add/{song_id}', [\App\Http\Controllers\Saved_songsController::class, 'add'])->name('savedSongs.add');
 
 // Detail pages
@@ -39,6 +39,11 @@ Route::get('/genre/{genre_id}', [\App\Http\Controllers\GenresController::class, 
 
 // Delete pages
 Route::get('/saved-song/delete/{song_id}', [\App\Http\Controllers\Saved_songsController::class, 'delete'])->name('savedSongs.delete');
+
+// Create playlist
+Route::get('/Savedlists/add', [\App\Http\Controllers\Saved_listController::class, 'add'])->name('savedlists.add');
+
+Route::post('/Savedlists/store', [\App\Http\Controllers\Saved_listController::class, 'store'])->name('savedlists.store');
 
 
 require __DIR__.'/auth.php';

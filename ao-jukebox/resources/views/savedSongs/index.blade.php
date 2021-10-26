@@ -14,6 +14,10 @@
                         @foreach($savedSongs as $songs)
                             <li> {{$songs->id}}) {{$songs->song}} | <a href="/saved-song/delete/{{$songs->id}}">Delete </a> | <a href="/song/{{$songs->id}}">Detail</a></li>
                         @endforeach
+
+                        <div class="flex items-center justify-end mt-4">
+                            <a href="/Savedlists/add">Save as playlist</a>
+                        </div>
                     </ul>
                 </div>
             </div>
