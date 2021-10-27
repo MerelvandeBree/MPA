@@ -8,6 +8,7 @@ use App\Models\SessionSongs;
 use App\Models\Songs;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
 class Saved_listController extends Controller
 {
@@ -17,6 +18,7 @@ class Saved_listController extends Controller
      *
      * @return void
      */
+
     public function __construct()
     {
         $this->middleware('auth');
@@ -28,14 +30,27 @@ class Saved_listController extends Controller
         $sp = new SessionSongs();
         $playlists = Saved_lists::all();
         return view('savedLists.index', compact('playlists'));
+
     }
 
-     public function add() {
+    public function detail($id)
+    {
+        $playlist = Saved_lists::find($id);
+//        var_dump($playlist);
+//        exit();
+        return view('savedLists.detail', compact('playlist'));
+    }
+
+     public function add()
+     {
         // Create playlist (invoegen naam + id)
         return view('savedLists.add');
      }
 
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
+        // Add songs to playlist (koppelen van song_id + playlist_id door koppeltabel)
+
         $playlist = New Saved_lists();
         $playlist->saved_list = $request->playlist_name;
 
@@ -43,7 +58,8 @@ class Saved_listController extends Controller
 
         $sp = new SessionSongs();
         $savedSongs = $sp->getSongs();
-        foreach($savedSongs as $ss){
+        foreach($savedSongs as $ss)
+        {
             $savedSong = new PlaylistSong();
             $savedSong->playlist_id = $playlist->id;
             $savedSong->song_id = $ss->id;
@@ -54,18 +70,20 @@ class Saved_listController extends Controller
 
         return view('Savedlists.index', compact('playlists'));
 
-//        $sp = new SessionList();
-
-
-        // Add songs to playlist (koppelen van song_id + playlist_id door koppeltabel)
     }
 
-//    public function store() {
-//        // Pushen van gegevens naar database
-//    }
+    public function delete($id)
+    {
+        // Delete song from database
+        $playlist = DB::table('playlistsong')->where('song_id', '=', $id)->delete();
+        return view('Savedlists.delete', compact('playlist'));
+    }
 
-//     public function show() {
-//        // Uitprinten van playlist namen
-//     }
+    public function edit($id, $name)
+    {
+        // edit name playlist
+        $playlist = DB::table('saved_lists')->where('id', '=', $id)->update(['saved_list' => $name]);
+        return view('Savedlists.edit', compact('playlist'));
+    }
 
 }
