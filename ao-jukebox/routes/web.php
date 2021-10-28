@@ -45,5 +45,9 @@ Route::get('/saved-list/delete/{song_id}', [\App\Http\Controllers\Saved_listCont
 Route::get('/Savedlists/add', [\App\Http\Controllers\Saved_listController::class, 'add'])->name('savedlists.add');
 Route::post('/Savedlists/store', [\App\Http\Controllers\Saved_listController::class, 'store'])->name('savedlists.store');
 
+// Edit playlist
+Route::get('/saved-list/edit/{id}', [\App\Http\Controllers\Saved_listController::class, 'edit'])->name('savedlists.edit');
+Route::post('/saved-list/update', [\App\Http\Controllers\Saved_listController::class, 'update'])->name('savedLists.update');
+
 
 require __DIR__.'/auth.php';
