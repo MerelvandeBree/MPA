@@ -27,15 +27,15 @@ class GenresController extends Controller
      */
     public function index()
     {
-        $you = auth()->user();
         $genres = Genres::all();
-        return view('genres.index', compact('genres', 'you'));
+
+        return view('genres.index', compact('genres'));
     }
 
     public function songList($genre_id)
     {
-        $you = auth()->user();
         $songs = Songs::where('genre_id', '=', $genre_id)->get();
+
         return view('songs.index', compact('songs'));
     }
 

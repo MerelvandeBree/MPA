@@ -28,8 +28,7 @@ Route::resource('genres', \App\Http\Controllers\GenresController::class);
 Route::get('/saved-lists', [\App\Http\Controllers\Saved_listController::class, 'index'])->name('savedLists.index');
 Route::get('/saved-songs', [\App\Http\Controllers\Saved_songsController::class, 'index'])->name('savedSongs.index');
 
-// Add pages
-//Route::get('/saved-list/add/{song_id}', [\App\Http\Controllers\Saved_listController::class, 'add'])->name('savedLists.add');
+// Add song to playlist
 Route::get('/saved-song/add/{song_id}', [\App\Http\Controllers\Saved_songsController::class, 'add'])->name('savedSongs.add');
 
 // Detail pages
@@ -48,6 +47,5 @@ Route::post('/Savedlists/store', [\App\Http\Controllers\Saved_listController::cl
 // Edit playlist
 Route::get('/saved-list/edit/{id}', [\App\Http\Controllers\Saved_listController::class, 'edit'])->name('savedlists.edit');
 Route::post('/saved-list/update', [\App\Http\Controllers\Saved_listController::class, 'update'])->name('savedLists.update');
-
 
 require __DIR__.'/auth.php';

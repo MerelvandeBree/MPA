@@ -26,18 +26,16 @@ class SongsController extends Controller
      */
     public function index()
     {
-        $you = auth()->user();
         $songs = Songs::all();
-        return view('songs.index', compact('songs', 'you'));
 
-
+        return view('songs.index', compact('songs'));
     }
 
     public function detail($id)
     {
-        $you = auth()->user();
         $song = Songs::find($id);
-        return view('songs.detail', compact('song', 'you'));
+
+        return view('songs.detail', compact('song'));
     }
 
 }

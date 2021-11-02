@@ -23,26 +23,25 @@ class Saved_songsController extends Controller
 
     public function index()
     {
-
         $sp = new SessionSongs();
 
-        $you = auth()->user();
         $savedSongs = $sp->getSongs();
 
-        return view('savedSongs.index', compact('savedSongs', 'you'));
+        return view('savedSongs.index', compact('savedSongs'));
     }
 
-    public function add($song_id) {
+    public function add($song_id)
+    {
         $sp = new SessionSongs();
         $sp->AddSong($song_id);
 
-        $you = auth()->user();
         $savedSongs = $sp->getSongs($song_id);
 
-        return view('savedSongs.add', compact('savedSongs', 'you'));
+        return view('savedSongs.add', compact('savedSongs'));
     }
 
-    public function delete($song_id){
+    public function delete($song_id)
+    {
         $sp = new SessionSongs();
         $sp->DeleteSong($song_id);
 

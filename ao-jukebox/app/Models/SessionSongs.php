@@ -48,7 +48,6 @@ class SessionSongs
         }
 
         return $songs;
-//        return Session::get('savedSongs');
     }
 
 }
